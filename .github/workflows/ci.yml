@@ -1,0 +1,11 @@
+name: Check Manifests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout apps binaries
+        uses: actions/checkout@v4
+      - name: Test Bucket
+        uses: ScoopInstaller/GithubActions@main

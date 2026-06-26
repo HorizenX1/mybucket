@@ -1,0 +1,22 @@
+name: Excavator
+
+on:
+  workflow_dispatch: # 允许手动触发
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 时间 00:00 执行一次自动更新检查
+
+jobs:
+  excavate:
+    name: Auto Update Manifests
+    runs-on: windows-latest
+    permissions:
+      contents: write # 必须赋予写入权限，以便 Action 将更新后的 JSON 提交回仓库
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Scoop Excavator
+        uses: ScoopInstaller/GithubActions@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SKIP_UPDATED: '1' # 如果没有更新，日志里就不打印了，保持干净

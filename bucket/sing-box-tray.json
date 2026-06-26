@@ -1,0 +1,30 @@
+{
+    "version": "1.0.0",
+    "description": "Lightweight Windows system tray manager and process supervisor for sing-box",
+    "homepage": "https://github.com/HorizenX1/sing-box-tray",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/HorizenX1/sing-box-tray/releases/download/v1.0.0/sing-box-tray.exe",
+            "hash": "632b53b4c30818fd1640b9fbc57474917cf175188af26dfdd7e0a6349a58fe11"
+        }
+    },
+    "bin": "sing-box-tray.exe",
+    "shortcuts": [
+        [
+            "sing-box-tray.exe",
+            "sing-box-tray"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "github": "https://github.com/HorizenX1/sing-box-tray"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/HorizenX1/sing-box-tray/releases/download/v$version/sing-box-tray.exe"
+            }
+        }
+    }
+}
